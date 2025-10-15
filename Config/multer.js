@@ -1,0 +1,15 @@
+import multer from "multer";
+
+// Save to local "uploads" folder
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // folder name
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+export default upload;
